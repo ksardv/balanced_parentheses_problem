@@ -4,6 +4,7 @@ $strings = [
     '(())', //yes
     '())', //no
     '(', //no
+    '', //no
     '(()())', //yes
     ')()(', //no
     '(())()([{}])({})', //yes
@@ -16,19 +17,19 @@ function isValid(string $str): bool
     $splitString = str_split($str);
     
     foreach ($splitString as $st) {
-      //  If the input string contains an opening bracket,
-      //  push in on to the array.
+        // If the input string contains an opening bracket
+        // push it to the array.
         if ($st == '(' || $st == '{' || $st == '[') {
             array_push($arr, $st);
         } else {
-      // In the case of valid bracket, the array cannot be
-      // be empty if a closing bracket is encountered.
+            // In the case of valid bracket, the array cannot be
+            // be empty if a closing bracket is encountered.
             if (count($arr) == 0) {
                 return false;
             }
-        // If the input string contains a closing bracket,
-        // then remove the corresponding opening bracket if
-        // present.
+            // If the input string contains a closing bracket,
+            // then remove the corresponding opening bracket if
+            // present.
             $last = end($arr);
             if ($st == ')' && $last == '(' ||
             $st == '}' && $last == '{' ||
@@ -37,8 +38,8 @@ function isValid(string $str): bool
             }
         }
     }
-    //  Checking the status of the array to determine the
-    //  validity of the string.
+    // Checking the status of the array to determine the
+    // validity of the string.
     if (count($arr) == 0) {
         return true;
     } else {
