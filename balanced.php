@@ -29,10 +29,10 @@ function isValid(string $str): bool
         // If the input string contains a closing bracket,
         // then remove the corresponding opening bracket if
         // present.
-            $top = end($arr);
-            if ($st == ')' && $top == '(' ||
-            $st == '}' && $top == '{' ||
-            $st == ']' && $top == '[') {
+            $last = end($arr);
+            if ($st == ')' && $last == '(' ||
+            $st == '}' && $last == '{' ||
+            $st == ']' && $last == '[') {
                 array_pop($arr);
             }
         }
@@ -46,10 +46,15 @@ function isValid(string $str): bool
     }
 }
 
-foreach ($strings as $str) {
-    if (isValid($str)) {
-        echo("Yes\n");
-    } else {
-        echo("No\n");
+function checkStrings(array $strings): void
+{
+    foreach ($strings as $str) {
+        if (isValid($str)) {
+            echo("Yes\n");
+        } else {
+            echo("No\n");
+        }
     }
 }
+
+checkStrings($strings);
